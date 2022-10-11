@@ -1,0 +1,17 @@
+{% load socialaccount %}
+<html>
+<body>
+<h1>Krayo</h1>
+{% if user.is_authenticated %}
+  <p>Welcome, You are logged in as {{ user.username }}</p>
+  <a href="logout">Logout</a>
+  {% for i in object %}
+  <h1>Title:</h1><p>{{object.title}}</p><br>
+  <h1>pdf file:</h1><button ><a href="{{i.pdf.url}}">Click to view</a></button><br>
+  {% endfor %}
+{% else %}
+  <a href="{% provider_login_url 'google' %}">Login With Google</a>
+{% endif %}
+
+</body>
+</html>
